@@ -1,0 +1,54 @@
+1.	Найти товары с максимальной ценой.
+SELECT Price
+FROM [Products]
+WHERE Price = (SELECT Max(Price) FROM [Products]);
+
+2.	Выбрать все товары, у которых Unit '10 pkgs.'.
+SELECT *
+FROM [Products]
+WHERE Unit = '10 pkgs.';
+
+3.	Выбрать адреса поставщиков, которые проживают в одном из городов: Tokyo, Frankfurt, Osaka.
+SELECT Address
+FROM [Customers]
+WHERE City = 'Tokyo' OR City = 'Frankfurt' OR City = 'Osaka';
+
+4.	 Выбрать названия товаров, у которых Price = 13 или 15 и отсортировать по возрастанию, использовать Select команды с объединением результатов через UNION.
+SELECT ProductName
+FROM [Products]
+WHERE Price = 13 UNION SELECT ProductName FROM [Products] WHERE Price = 15
+ORDER BY ProductName;
+
+5.	Выбрать все товары, у которых поставщик «Grandma Kelly's Homestead» и цена > 27. В результате вывести 3 колонки: Product, Supplier, Price.
+SELECT ProductName, SupplierName, Price
+FROM [Products] INNER JOIN [Suppliers]
+ON Products.SupplierID = Suppliers.SupplierID
+WHERE SupplierName = "Grandma Kelly's Homestead" and Price > 27;
+
+6.	Показать названия продуктов и их категорий, которые используются в заказах от заказчика по имени Blondel père et fils и категории которых состоят как минимум из 2-х слов.
+SELECT ProductName, CategoryName
+FROM [Products] INNER JOIN [Categories]
+ON Products.CategoryID = Categories.CategoryID INNER JOIN [OrderDetails] ON Products.ProductID = OrderDetails.ProductID INNER JOIN [Orders] ON OrderDetails.OrderID = Orders.OrderID INNER JOIN [Customers] ON Orders.CustomerID = Customers.CustomerID
+WHERE Customers.CustomerName = 'Blondel père et fils' AND Categories.CategoryName LIKE '% %';
+
+7.	 *Найти среднюю стоимость приправ (Condiments) отправленных в штаты, заказы на которые оформлены Margaret Peacock, вывести стоимость округленную до 2-х знаков после запятой (колонку назвать Average)
+SELECT round(AVG(Price), 2) AS Average
+FROM [OrderDetails] INNER JOIN [Orders] ON OrderDetails.OrderID = Orders.OrderID INNER JOIN [Products] ON Products.ProductID = OrderDetails.ProductID INNER JOIN [Categories] ON Categories.CategoryID = Products.CategoryID INNER JOIN [Customers] ON Customers.CustomerID = Orders.CustomerID INNER JOIN [Employees] ON Employees.EmployeeID = Orders.EmployeeID
+WHERE Customers.Country = 'USA' AND Employees.LastName = 'Peacock' AND EmploySELECT round(AVG(Price), 2) AS Average
+FROM [OrderDetails] INNER JOIN [Orders] ON OrderDetails.OrderID = Orders.OrderID INNER JOIN [Products] ON Products.ProductID = OrderDetails.ProductID INNER JOIN [Categories] ON Categories.CategoryID = Products.CategoryID INNER JOIN [Customers] ON Customers.CustomerID = Orders.CustomerID INNER JOIN [Employees] ON Employees.EmployeeID = Orders.EmployeeID
+WHERE Customers.Country = 'USA' AND Employees.LastName = 'Peacock' AND Employees.FirstName = 'Margaret' AND Categories.CategoryName = 'Condiments';ees.FirstName = 'Margaret' AND Categories.CategoryName = 'Condiments';
+
+8.	 Найти количество клиентов, которые НЕ проживают в Франции и Германии,  столбец назвать Countt.
+SELECT COUNT(*) AS Countt
+FROM [Customers]
+WHERE Country NOT IN ('France', 'Germany');
+
+9.	 Вывести среднюю сумму товаров, поставляемых в бутылках, округлив до 2-х знаков после запятой, столбец назвать Summ.
+SELECT round(AVG(Price), 2) AS Summ
+FROM [Products]
+WHERE Unit LIKE '%bottle%';
+
+10.	 Вывести сумму всех  , в названии которых содержится ”od”, столбец назвать Summ.
+SELECT Sum(Price) AS Summ
+FROM [Products]
+WHERE ProductName LIKE '%od%';

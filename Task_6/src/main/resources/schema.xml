@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Itinerary>
+    <Air Direction="OneWay" TotalTravelTime="PT2H55M">
+        <Options>
+            <Option>
+                <Flight DepartureDateTime="2018-12-29T09:00:00.000" ArrivalDateTime="2018-12-29T10:05:00.000" BookCode="K" StopQuantity="0" RPH="0" FlightNumber="0000" NumberInParty="1">
+                    <Extension>
+                        <FlightSupplementalInfo FlyingTime="PT1H5M"/>
+                        <BookingClassAvailability BookCode="K" BookDesig="9" Cabin="Economy"/>
+                        <Eticket>E</Eticket>
+                        <TerminalInformation>
+                            <terminal>1</terminal>
+                        </TerminalInformation>
+                        <InventorySystem Name="ABC"/>
+                    </Extension>
+                </Flight>
+                <Flight DepartureDateTime="2018-12-29T11:00:00.000" ArrivalDateTime="2018-12-29T11:55:00.000" BookCode="K" StopQuantity="0" RPH="1" FlightNumber="1111" NumberInParty="1">
+                    <Extension>
+                        <FlightSupplementalInfo FlyingTime="PT55M"/>
+                        <BookingClassAvailability BookCode="K" BookDesig="9" Cabin="Economy"/>
+                        <Eticket>E</Eticket>
+                        <TerminalInformation>
+                            <terminal>1</terminal>
+                        </TerminalInformation>
+                        <InventorySystem Name="ABC"/>
+                    </Extension>
+                </Flight>
+                <Extension>
+                    <InventorySystem Name="ABC"/>
+                    <Source>GDS</Source>
+                </Extension>
+            </Option>
+        </Options>
+        <Extension>
+            <Attributes TripType="OW"/>
+        </Extension>
+    </Air>
+    <PricingInfo Source="Private">
+        <Total>
+            <Base Amount="91.00" CurrencyCode="EUR"/>
+            <Taxes>
+                <Tax Amount="7.38" CurrencyCode="EUR" TaxCode="AA"/>
+                <Tax Amount="9.50" CurrencyCode="EUR" TaxCode="BB"/>
+                <Tax Amount="26.56" CurrencyCode="EUR" TaxCode="CC"/>
+                <Tax Amount="19.08" CurrencyCode="EUR" TaxCode="DD"/>
+            </Taxes>
+            <Fees>
+                <Fee TaxCode="EE" Amount="10.00" CurrencyCode="EUR"/>
+            </Fees>
+            <Total Amount="163.52" CurrencyCode="EUR"/>
+            <Extension>
+                <TaxInfos>
+                    <TaxInfo TaxCode="AA" BaseCurrency="EUR"/>
+                    <TaxInfo TaxCode="BB" BaseCurrency="EUR"/>
+                    <TaxInfo TaxCode="CC" BaseCurrency="EUR"/>
+                    <TaxInfo TaxCode="DD" BaseCurrency="EUR"/>
+                </TaxInfos>
+                <FeeInfos>
+                    <FeeInfo TaxCode="EE" CurrencyCode="EUR"/>
+                </FeeInfos>
+            </Extension>
+        </Total>
+        <PTCs>
+            <PTC Source="Private">
+                <PassengerQuantity Code="ADT" Quantity="1"/>
+                <BasisCodes>
+                    <BasisCode>AAAAAAA</BasisCode>
+                </BasisCodes>
+                <PassengerFare>
+                    <Base Amount="91.00" CurrencyCode="EUR"/>
+                    <Taxes>
+                        <Tax Amount="7.38" CurrencyCode="EUR" TaxCode="AA"/>
+                        <Tax Amount="9.50" CurrencyCode="EUR" TaxCode="BB"/>
+                        <Tax Amount="26.56" CurrencyCode="EUR" TaxCode="CC"/>
+                        <Tax Amount="19.08" CurrencyCode="EUR" TaxCode="DD"/>
+                    </Taxes>
+                    <Fees>
+                        <Fee TaxCode="EE" Amount="10.00" CurrencyCode="EUR"/>
+                    </Fees>
+                    <Total Amount="163.52" CurrencyCode="EUR"/>
+                    <Extension>
+                        <TaxInfos>
+                            <TaxInfo TaxCode="AA" CurrencyCode="EUR"/>
+                            <TaxInfo TaxCode="BB" CurrencyCode="EUR"/>
+                            <TaxInfo TaxCode="CC" CurrencyCode="EUR"/>
+                            <TaxInfo TaxCode="DD" CurrencyCode="EUR"/>
+                        </TaxInfos>
+                        <FeeInfos>
+                            <FeeInfo TaxCode="EE" CurrencyCode="EUR"/>
+                        </FeeInfos>
+                    </Extension>
+                </PassengerFare>
+                <Extension>
+                    <Passenger PassengerCode="ADT" PassengerReference="0" PassengerAge="35">
+                        <RemoteSystemPTCs PassengerCode="ADT"/>
+                    </Passenger>
+                </Extension>
+            </PTC>
+        </PTCs>
+        <FareInfos>
+            <FareInfo>
+                <DepartureDate>2018-12-29T09:00:00.000</DepartureDate>
+                <FareReference>AAAAAAA</FareReference>
+                <Extension>
+                    <Base Amount="91.00" CurrencyCode="EUR"/>
+                    <TaxInfos>
+                        <TaxInfo TaxCode="AA" CurrencyCode="EUR"/>
+                        <TaxInfo TaxCode="BB" CurrencyCode="EUR"/>
+                        <TaxInfo TaxCode="CC" CurrencyCode="EUR"/>
+                        <TaxInfo TaxCode="DD" CurrencyCode="EUR"/>
+                    </TaxInfos>
+                    <FeeInfos>
+                        <FeeInfo TaxCode="EE" CurrencyCode="EUR"/>
+                    </FeeInfos>
+                    <Total Amount="163.52" CurrencyCode="EUR"/>
+                    <Segment FlightReference="0"/>
+                    <Segment FlightReference="1"/>
+                    <Passenger PassengerCode="ADT" PassengerReference="0" PassengerAge="35">
+                        <RemoteSystemPTCs PassengerCode="ADT"/>
+                    </Passenger>
+                    <Carrier>LH</Carrier>
+                </Extension>
+            </FareInfo>
+        </FareInfos>
+        <Extension >
+            <PricingSystem/>
+            <Provider ProviderCode="EEEEEEEE"/>
+        </Extension>
+    </PricingInfo>
+    <TicketingInfo TicketType="eTicket"/>
+</Itinerary>

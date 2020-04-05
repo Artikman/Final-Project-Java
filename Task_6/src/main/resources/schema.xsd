@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Itinerary">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Air"/>
+                <xs:element ref="PricingInfo"/>
+                <xs:element ref="TicketingInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Air">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Options"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+            <xs:attribute name="Direction" use="required" type="xs:NCName"/>
+            <xs:attribute name="TotalTravelTime" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Options">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Option"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Flight"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Flight">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+            <xs:attribute name="ArrivalDateTime" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="BookCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="DepartureDateTime" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="FlightNumber" use="required" type="xs:integer"/>
+            <xs:attribute name="NumberInParty" use="required" type="xs:integer"/>
+            <xs:attribute name="RPH" use="required" type="xs:integer"/>
+            <xs:attribute name="StopQuantity" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PricingInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Total"/>
+                <xs:element ref="PTCs"/>
+                <xs:element ref="FareInfos"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+            <xs:attribute name="Source" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PTCs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="PTC"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PTC">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="PassengerQuantity"/>
+                <xs:element ref="BasisCodes"/>
+                <xs:element ref="PassengerFare"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+            <xs:attribute name="Source" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PassengerQuantity">
+        <xs:complexType>
+            <xs:attribute name="Code" use="required" type="xs:NCName"/>
+            <xs:attribute name="Quantity" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="BasisCodes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="BasisCode"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="BasisCode" type="xs:NCName"/>
+    <xs:element name="PassengerFare">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Base"/>
+                <xs:element ref="Taxes"/>
+                <xs:element ref="Fees"/>
+                <xs:element ref="Total"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FareInfos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="FareInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FareInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="DepartureDate"/>
+                <xs:element ref="FareReference"/>
+                <xs:element ref="Extension"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DepartureDate" type="xs:NMTOKEN"/>
+    <xs:element name="FareReference" type="xs:NCName"/>
+    <xs:element name="TicketingInfo">
+        <xs:complexType>
+            <xs:attribute name="TicketType" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Extension">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="Attributes"/>
+                    <xs:sequence>
+                        <xs:element ref="PricingSystem"/>
+                        <xs:element ref="Provider"/>
+                    </xs:sequence>
+                </xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="FlightSupplementalInfo"/>
+                    <xs:element ref="BookingClassAvailability"/>
+                    <xs:element ref="Eticket"/>
+                    <xs:element ref="TerminalInformation"/>
+                </xs:sequence>
+                <xs:element minOccurs="0" ref="InventorySystem"/>
+                <xs:element minOccurs="0" ref="Source"/>
+                <xs:element minOccurs="0" ref="Base"/>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="TaxInfos"/>
+                    <xs:element ref="FeeInfos"/>
+                </xs:sequence>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="Total"/>
+                    <xs:element maxOccurs="unbounded" ref="Segment"/>
+                </xs:sequence>
+                <xs:element minOccurs="0" ref="Passenger"/>
+                <xs:element minOccurs="0" ref="Carrier"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Attributes">
+        <xs:complexType>
+            <xs:attribute name="TripType" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PricingSystem">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="Provider">
+        <xs:complexType>
+            <xs:attribute name="ProviderCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FlightSupplementalInfo">
+        <xs:complexType>
+            <xs:attribute name="FlyingTime" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="BookingClassAvailability">
+        <xs:complexType>
+            <xs:attribute name="BookCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="BookDesig" use="required" type="xs:integer"/>
+            <xs:attribute name="Cabin" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Eticket" type="xs:NCName"/>
+    <xs:element name="TerminalInformation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="terminal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="terminal" type="xs:integer"/>
+    <xs:element name="InventorySystem">
+        <xs:complexType>
+            <xs:attribute name="Name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Source" type="xs:NCName"/>
+    <xs:element name="TaxInfos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TaxInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TaxInfo">
+        <xs:complexType>
+            <xs:attribute name="BaseCurrency" type="xs:NCName"/>
+            <xs:attribute name="CurrencyCode" type="xs:NCName"/>
+            <xs:attribute name="TaxCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FeeInfos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="FeeInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="FeeInfo">
+        <xs:complexType>
+            <xs:attribute name="CurrencyCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="TaxCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Segment">
+        <xs:complexType>
+            <xs:attribute name="FlightReference" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Passenger">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="RemoteSystemPTCs"/>
+            </xs:sequence>
+            <xs:attribute name="PassengerAge" use="required" type="xs:integer"/>
+            <xs:attribute name="PassengerCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="PassengerReference" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RemoteSystemPTCs">
+        <xs:complexType>
+            <xs:attribute name="PassengerCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Carrier" type="xs:NCName"/>
+    <xs:element name="Total">
+        <xs:complexType>
+            <xs:choice minOccurs="0">
+                <xs:element ref="Extension"/>
+                <xs:sequence>
+                    <xs:element ref="Base"/>
+                    <xs:element ref="Taxes"/>
+                    <xs:element ref="Fees"/>
+                    <xs:element ref="Total"/>
+                </xs:sequence>
+            </xs:choice>
+            <xs:attribute name="Amount" type="xs:decimal"/>
+            <xs:attribute name="CurrencyCode" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Base">
+        <xs:complexType>
+            <xs:attribute name="Amount" use="required" type="xs:decimal"/>
+            <xs:attribute name="CurrencyCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Taxes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Tax"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Tax">
+        <xs:complexType>
+            <xs:attribute name="Amount" use="required" type="xs:decimal"/>
+            <xs:attribute name="CurrencyCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="TaxCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Fees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Fee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Fee">
+        <xs:complexType>
+            <xs:attribute name="Amount" use="required" type="xs:decimal"/>
+            <xs:attribute name="CurrencyCode" use="required" type="xs:NCName"/>
+            <xs:attribute name="TaxCode" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
